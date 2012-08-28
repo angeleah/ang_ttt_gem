@@ -1,12 +1,10 @@
 require "spec_helper"
-require "mock_ui"
 require "board"
 require "game"
 require "human_player"
 
 describe "human_player" do
   
-  let (:mockui) { MockUi.new}
   let (:board)  { Board.new }
   let (:game)   { Game.new(mockui) }
   let (:player) { HumanPlayer.new("O") }
