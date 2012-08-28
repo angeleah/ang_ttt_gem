@@ -4,10 +4,6 @@ class Board
     @cells = Array.new(9) {" "}
   end
   
-  def hi
-    puts "hi"
-  end
-  
   def get(cell_number)
     @cells[cell_number]
   end
