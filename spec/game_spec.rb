@@ -49,7 +49,9 @@ describe "Game" do
   end
 
   it "should return the message key as the result" do
-     scoring.stub(:winning_mark).and_return(false)
-     game.result.should == :draw
+    game.create_computer_player("X")
+    game.create_human_player("O")
+    scoring.stub(:winning_mark).and_return(false)
+    game.result.should == :draw
   end
 end

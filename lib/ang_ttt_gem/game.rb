@@ -55,13 +55,9 @@ class Game
    end
 
    def result
-     message_key = :draw
-     @players.each_with_index do |player, i|
-       num = i + 1
-       if @scoring.winning_mark(@board) == player.mark
-         message_key = "player_#{num}_win".to_sym
-       end
-     end
-     message_key
+     winning_mark = @scoring.winning_mark(@board)
+     return :player_1_win if winning_mark == @players[0].mark
+     return :player_2_win if winning_mark == @players[1].mark
+     :draw
    end
 end
