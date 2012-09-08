@@ -56,10 +56,11 @@ class Board
   end
 
   def possible_winning_combinations
-    possible_winning_combinations = []
-    rows.collect{|row| possible_winning_combinations << row }
-    columns.collect{|column| possible_winning_combinations << column }
-    possible_winning_combinations << diagonal_forward
-    possible_winning_combinations << diagonal_back
+    [].tap do |win_combos|
+      rows.collect { |row| win_combos << row }
+      columns.collect { |column| win_combos << column }
+      win_combos << diagonal_forward
+      win_combos << diagonal_back
+    end
   end
 end
