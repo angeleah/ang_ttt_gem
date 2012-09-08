@@ -33,9 +33,9 @@ class Game
    end
 
    def make_move_player(player, move)
+     return false unless move_valid?(move)
      index = player - 1
      mark = @players[index].mark
-     return false unless move_valid?(move)
      @board.set(move, mark)
      prepare_display_state
    end
@@ -45,16 +45,9 @@ class Game
    end
 
    def prepare_display_state
-     board_display_state = []
-     current_state = @board.current_state
-     cell_numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-     index = 0
-     current_state.each do |cell|
-       board_display_state << cell_numbers[index] if cell == " "
-       board_display_state << current_state[index] unless cell == " "
-       index += 1
+     @board.current_state.each_with_index.map do |cell, index|
+       cell == " " ? (index + 1).to_s : cell
      end
-     board_display_state
    end
 
    def is_over?
