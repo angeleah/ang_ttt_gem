@@ -1,7 +1,8 @@
 class Board
+  BLANK = " "
 
   def initialize
-    @cells = Array.new(9) {" "}
+    @cells = Array.new(9) { BLANK }
   end
 
   def get(cell_number)
@@ -13,28 +14,23 @@ class Board
   end
 
   def undo_move(cell_number)
-    @cells[cell_number] = " "
+    @cells[cell_number] = BLANK
   end
 
   def available_spaces
-    available_spaces = @cells.each_with_index.select { |i, idx| i =~ / / }
-    available_spaces = available_spaces.map{|i| i[1] }
-    available_spaces
+    @cells.each_with_index.select { |i, _| i == BLANK }.map { |i| i[1] }
   end
 
   def cell_occupied?(cell_number)
-     get(cell_number.to_i - 1) != " "
+     get(cell_number.to_i - 1) != BLANK
   end
 
   def current_state
-    current_state = @cells.map {|c| c}
+    @cells
   end
 
   def clear_all_spaces
-    mark = " "
-    @cells.each_with_index do |cell, index|
-      set(index, mark)
-    end
+    @cells.map! { |i| BLANK }
   end
 
   def rows
