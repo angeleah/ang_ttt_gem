@@ -22,7 +22,7 @@ class Board
   end
 
   def cell_occupied?(cell_number)
-     get(cell_number.to_i - 1) != BLANK
+    get(cell_number.to_i - 1) != BLANK
   end
 
   def current_state
@@ -34,9 +34,9 @@ class Board
   end
 
   def rows
-     [ @cells[0..2],
-     @cells[3..5],
-     @cells[6..8] ]
+    [ @cells[0..2],
+      @cells[3..5],
+      @cells[6..8] ]
   end
 
   def columns
@@ -45,14 +45,14 @@ class Board
 
   def diagonal_forward
     [ @cells[2],
-    @cells[4],
-    @cells[6] ]
+      @cells[4],
+      @cells[6] ]
   end
 
   def diagonal_back
     [ @cells[0],
-    @cells[4],
-    @cells[8] ]
+      @cells[4],
+      @cells[8] ]
   end
 
   def possible_winning_combinations
