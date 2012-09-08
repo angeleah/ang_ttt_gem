@@ -11,28 +11,24 @@ class Ai
 
   def find_opponent_mark
     state = @board.current_state
-    min_mark = state.reject {|c| c =~ /^#{@max_mark}|\s{1}$/ }
-    @min_mark = min_mark[0]
+    @min_mark = state.reject {|c| c =~ /^#{@max_mark}|\s{1}$/ }.first
   end
 
   def select_optimal_start_move
-    start_moves = [0, 2, 4, 6, 8]
-    best_move = start_moves.sample
+    [0, 2, 4, 6, 8].sample
   end
 
   def random_move
-    move =  @board.available_spaces.sample
+    @board.available_spaces.sample
   end
 
   def find_best_move
     if @board.available_spaces.count == 9
-      best_move = select_optimal_start_move
+      select_optimal_start_move
     else
       find_opponent_mark
-      move_reference, best_score = max_move
-      best_move = move_reference
+      max_move[0]
     end
-    best_move
   end
 
   def max_move
