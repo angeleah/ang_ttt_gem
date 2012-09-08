@@ -74,10 +74,8 @@ class Ai
   end
 
   def evaluate_the_board
-    decision = nil
-    decision = 1 if @scoring.winner?(@board) && @scoring.winning_mark(@board) == @max_mark
-    decision = -1 if @scoring.winner?(@board) && @scoring.winning_mark(@board) != @max_mark
-    decision = 0 if @scoring.draw?(@board)
-    decision
+    return 1 if @scoring.winner?(@board) && @scoring.winning_mark(@board) == @max_mark
+    return -1 if @scoring.winner?(@board) && @scoring.winning_mark(@board) != @max_mark
+    0
   end
 end
