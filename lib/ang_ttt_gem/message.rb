@@ -1,7 +1,7 @@
 class Message
-  
+
   def initialize
-    
+
     @message = {
        welcome: "Welcome to Tic Tac Toe! You will create 2 players. The first player you create will go first.\n",
        create_player: "Create a player.\n",
@@ -15,7 +15,7 @@ class Message
        play_again?: "Would you like to play again? (Y/N)\n",
     }
   end
-  
+
   def passed(*keys)
     message = String.new
     keys.each do |key|

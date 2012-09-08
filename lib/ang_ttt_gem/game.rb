@@ -5,33 +5,33 @@ require "human_player"
 require "computer_player"
 
 class Game
-  
+
   attr_reader :players, :board
-  
+
   def initialize
     @board = Board.new
     @scoring = Scoring.new
     @validate = Validate.new
     @players = []
   end
-  
+
   def create_computer_player(mark)
     @players << ComputerPlayer.new(mark)
   end
-    
+
    def create_human_player(mark)
      @players << HumanPlayer.new(mark)
    end
-   
+
    def get_player_move(player)
      index = player - 1
      @players[index].get_move(@board)
    end
-   
+
    def move_valid?(move)
      (0..8).include?(move)
    end
-   
+
    def make_move_player(player, move)
      index = player - 1
      mark = @players[index].mark
@@ -39,11 +39,11 @@ class Game
      @board.set(move, mark)
      prepare_display_state
    end
-   
+
    def square_taken?(cell_number)
       @board.cell_occupied?(cell_number)
    end
-   
+
    def prepare_display_state
      board_display_state = []
      current_state = @board.current_state
@@ -56,11 +56,11 @@ class Game
      end
      board_display_state
    end
-   
+
    def is_over?
     @scoring.winner?(@board) || @scoring.draw?(@board)
    end
-  
+
    def result
      message_key = :draw
      @players.each_with_index do |player, i|

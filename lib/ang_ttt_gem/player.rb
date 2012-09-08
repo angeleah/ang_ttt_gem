@@ -1,5 +1,5 @@
 class Player
-  
+
   def set_mark(mark)
     @mark = mark
   end

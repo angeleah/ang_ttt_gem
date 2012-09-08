@@ -2,28 +2,28 @@ require "scoring"
 require "board"
 
 class Ai
-  
+
   def initialize(player, board)
     @board = board
     @scoring = Scoring.new
     @max_mark = player.mark
   end
-  
+
   def find_opponent_mark
     state = @board.current_state
     min_mark = state.reject {|c| c =~ /^#{@max_mark}|\s{1}$/ }
     @min_mark = min_mark[0]
   end
-  
+
   def select_optimal_start_move
     start_moves = [0, 2, 4, 6, 8]
     best_move = start_moves.sample
   end
-  
+
   def random_move
     move =  @board.available_spaces.sample
   end
-    
+
   def find_best_move
     if @board.available_spaces.count == 9
       best_move = select_optimal_start_move
@@ -34,7 +34,7 @@ class Ai
     end
     best_move
   end
-      
+
   def max_move
     best_move = nil
     best_score = nil
@@ -53,7 +53,7 @@ class Ai
     end
     return best_move, best_score
   end
-  
+
   def min_move
     best_move = nil
     best_score = nil
@@ -72,11 +72,11 @@ class Ai
     end
     return best_move, best_score
   end
-  
+
   def state_is_terminal?
     @scoring.winner?(@board) || @scoring.draw?(@board)
   end
-  
+
   def evaluate_the_board
     decision = nil
     decision = 1 if @scoring.winner?(@board) && @scoring.winning_mark(@board) == @max_mark
