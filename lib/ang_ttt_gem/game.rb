@@ -50,7 +50,7 @@ class Game
      end
    end
 
-   def is_over?
+   def over?
     @scoring.winner?(@board) || @scoring.draw?(@board)
    end
 

@@ -39,13 +39,13 @@ describe "Game" do
 
   it "should be able to determine if the game is over in a winner situation" do
     game.board.stub(:possible_winning_combinations).and_return([["X", "X", "X"],[ "O", " ", " "],["O", " ", " "],["X", "O", "O"],[ "X", " ", " "],["X", " ", " "],[ "X", " ", "O"],["X", " ", " "]])
-    game.is_over?.should == true
+    game.should be_over
   end
 
   it "should be able to determine if the game is over in a draw situation" do
     game.board.stub(:possible_winning_combinations).and_return([["X", "O", "X"],[ "O", "X", "X"],["O", "X", "O"],["X", "O", "O"],[ "O", "X", "X"],["X", "X", "O"],[ "X", "X", "O"],["X", "X", "O"]])
     game.board.stub(:available_spaces).and_return([])
-    game.is_over?.should == true
+    game.should be_over
   end
 
   it "should return the message key as the result" do
