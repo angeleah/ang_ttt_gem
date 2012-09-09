@@ -21,6 +21,10 @@ class Board
     @cells.each_with_index.select { |i, _| i == BLANK }.map { |i| i[1] }
   end
 
+  def spaces_available?
+    available_spaces.size > 0
+  end
+
   def cell_occupied?(cell_number)
     get(cell_number.to_i - 1) != BLANK
   end
