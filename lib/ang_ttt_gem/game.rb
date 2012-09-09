@@ -51,7 +51,7 @@ class Game
    end
 
    def over?
-    @scoring.winner?(@board) || @scoring.draw?(@board)
+     @scoring.winner?(@board) || @scoring.draw?(@board)
    end
 
    def result
