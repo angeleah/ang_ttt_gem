@@ -14,7 +14,7 @@ describe "Scoring" do
     scoring.winner?(board).should == false
   end
 
-  it 'should not determine a winner with a winner of mixed symbols' do
+  it 'should not determine a winner with a board of mixed symbols' do
     board.set(0, "X")
     board.set(4, "O")
     board.set(8, " ")
@@ -56,16 +56,36 @@ describe "Scoring" do
     scoring.winning_mark(board).should == "X"
   end
 
-  it "should be able to determine if the game was a draw" do
-     board.set(0,"X")
-     board.set(1,"O")
-     board.set(2,"X")
-     board.set(3,"X")
-     board.set(4,"O")
-     board.set(5,"X")
-     board.set(6,"O")
-     board.set(7,"X")
-     board.set(8,"O")
-     scoring.draw?(board).should == true
+  describe ".draw?" do
+    it "should be able to determine if the game was a draw" do
+      board.set(0,"X")
+      board.set(1,"O")
+      board.set(2,"X")
+      board.set(3,"X")
+      board.set(4,"O")
+      board.set(5,"X")
+      board.set(6,"O")
+      board.set(7,"X")
+      board.set(8,"O")
+      scoring.draw?(board).should == true
+    end
+
+    it "does not declare a draw if there is a winner" do
+      (0..2).each { |space| board.set(space, "X") }
+      (3..8).each { |space| board.set(space, "O") }
+      scoring.draw?(board).should be_false
+    end
+
+    it "does not declare a draw if spaces remain empty on the board" do
+      board.set(0,"X")
+      board.set(1,"O")
+      board.set(2,"X")
+      board.set(3,"X")
+      board.set(4,"O")
+      board.set(5,"X")
+      board.set(6,"O")
+      board.set(7,"X")
+      scoring.draw?(board).should be_false
+    end
   end
 end
