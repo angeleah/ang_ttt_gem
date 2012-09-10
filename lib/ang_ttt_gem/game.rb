@@ -36,7 +36,7 @@ class Game
      index = player - 1
      mark = @players[index].mark
      return false unless move_valid?(move)
-     make_move(move_mark)
+     make_move(move,mark)
      prepare_display_state
    end
 
