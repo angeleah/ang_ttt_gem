@@ -5,7 +5,7 @@ class Message
     @message = {
        welcome: "Welcome to Tic Tac Toe! You will create 2 players. The first player you create will go first.",
        create_player: "Create a player.",
-       determine_player_type: "Do you want the player to be human or computer? (H/C)",
+       determine_player_type: "Do you want the player to be human or computer? (human/computer)",
        select_player_mark: "Please select a single letter to represent the player.",
        invalid_selection: "That is an invalid selection, please make a valid selection.",
        select_square: "Please select an open square.",

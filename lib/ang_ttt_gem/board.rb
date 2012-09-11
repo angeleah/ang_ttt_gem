@@ -23,7 +23,7 @@ class Board
   end
 
   def cell_occupied?(cell_number)
-     get(cell_number.to_i - 1) != " "
+     get(cell_number) != " "
   end
 
   def current_state

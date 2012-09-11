@@ -14,7 +14,7 @@ class Game
     @validate = Validate.new
     @players = []
   end
-
+  
   def create_computer_player(mark)
     @players << ComputerPlayer.new(mark)
   end
@@ -49,9 +49,13 @@ class Game
    end
 
    def prepare_display_state
-     @board.current_state.each_with_index.map do |cell, index|
+     gather_board_state.each_with_index.map do |cell, index|
        cell == " " ? (index + 1).to_s : cell
      end
+   end
+
+   def gather_board_state
+     @board.current_state
    end
 
    def is_over?
