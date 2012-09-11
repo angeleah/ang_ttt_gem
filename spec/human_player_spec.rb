@@ -10,6 +10,6 @@ describe "human_player" do
   let (:player) { HumanPlayer.new("O") }
 
   it "get_move should return false" do
-    player.get_move(board).should == false
+    player.get_move(board).should be_false
   end
 end

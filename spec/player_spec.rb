@@ -3,10 +3,14 @@ require "player"
 
 describe "Player" do
 
-  let(:player) { Player.new }
+  class Dummy
+    include Player
+  end
+
+  let(:player) { Dummy.new("Q") }
 
   it "should be able to read a mark" do
-    player.mark.should be_nil
+    player.mark.should == "Q"
   end
 
   it "should be able to set a mark" do
