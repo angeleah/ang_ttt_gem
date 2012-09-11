@@ -41,7 +41,7 @@ class Game
    end
 
    def square_taken?(cell_number)
-      @board.cell_occupied?(cell_number)
+     @board.cell_occupied?(cell_number)
    end
 
    def prepare_display_state

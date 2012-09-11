@@ -5,13 +5,12 @@ describe "Player" do
 
   let(:player) { Player.new }
 
-  it "should be able to set a mark" do
-    mark = 'T'
-    player.set_mark(mark).should == "T"
+  it "should be able to read a mark" do
+    player.mark.should be_nil
   end
 
-  it "should be able to read a mark" do
-    player.set_mark("S")
-    player.mark.should == "S"
+  it "should be able to set a mark" do
+    player.mark = "T"
+    player.mark.should == "T"
   end
 end

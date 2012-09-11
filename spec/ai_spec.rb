@@ -8,7 +8,7 @@ describe "@ai" do
   before(:each) do
     @board = Board.new
     @max = ComputerPlayer.new(@mockui)
-    @max.set_mark("X")
+    @max.mark = "X"
     @ai = Ai.new(@max, @board)
   end
 
