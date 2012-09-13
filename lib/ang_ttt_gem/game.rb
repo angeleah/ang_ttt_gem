@@ -3,6 +3,7 @@ require "scoring"
 require "validate"
 require "human_player"
 require "computer_player"
+require "pry"
 
 class Game
 
@@ -14,7 +15,7 @@ class Game
     @validate = Validate.new
     @players = []
   end
-  
+
   def create_computer_player(mark)
     @players << ComputerPlayer.new(mark)
   end
@@ -28,6 +29,12 @@ class Game
      @players[index].get_move(@board)
    end
 
+   def player_can_make_move?(player)
+     move = get_player_move(player)
+     return true if move != false
+     return false if move == false
+   end
+
    def move_valid?(move)
      (0..8).include?(move)
    end
@@ -35,7 +42,7 @@ class Game
    def make_move_player(player, move)
      index = player - 1
      mark = @players[index].mark
-     return false unless move_valid?(move)
+     false unless move_valid?(move)
      make_move(move,mark)
      prepare_display_state
    end

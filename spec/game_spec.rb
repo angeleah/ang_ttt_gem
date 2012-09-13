@@ -60,4 +60,16 @@ describe "Game" do
      scoring.stub(:winning_mark).and_return(false)
      game.result.should == :draw
   end
+
+  it 'should be able to tell if a player can make a move' do
+    game.create_computer_player("W")
+    game.create_human_player("X")
+    game.player_can_make_move?(1).should == true
+  end
+
+  it 'should should be able to tell if a player can not make a move' do
+    game.create_human_player("X")
+    game.create_computer_player("W")
+    game.player_can_make_move?(1).should == false
+  end
 end
