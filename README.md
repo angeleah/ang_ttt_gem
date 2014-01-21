@@ -1,6 +1,6 @@
 Ang's Tic tac toe gem
 =====================
-This gem is the result of an exercise to learn how to package a gem.  In other exercises, I then include this gem as an exercise in how to use the functionality of the gem.
+This gem is the result of an exercise to learn how to package a gem.  In other exercises, I then include this gem as an exercise in how to use the functionality of the gem.  This gem uses the minimax algorithm to make move decisions.
 
 Useage:
 -------
